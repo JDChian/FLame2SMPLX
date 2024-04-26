@@ -13,10 +13,10 @@ smplx_obj = "../data/smplx-addon.obj"
 flame_obj = "../data/head_template.obj"
 smplx_2_flame = "../data/SMPL-X__FLAME_vertex_ids.npy"
 smplx_texture = "../data/smplx_texture_m_alb.png"
-flame_texture = "../data/swh_dongmi_white.png"
+flame_texture = "../data/mean_texture.jpg"
 
 # only face (not head)
-face_vertex_ids = "../data/face_vertex_ids.npy"
+face_vertex_ids = None
 
 
 
