@@ -23,14 +23,14 @@ def affine_transform(p1,p2,tex1,tex2):
     p1 = p1.reshape(-1,2).astype(np.float32) #[3,2]
     p2 = p2.reshape(-1,2).astype(np.float32) #[3,2]
     mat_trans = cv2.getAffineTransform(p1, p2) 
-    p1 = p1.astype(np.int)
-    p2 = p2.astype(np.int)
+    p1 = p1.astype(int)
+    p2 = p2.astype(int)
     
     dst_h,dst_w,_ = tex2.shape
 
     # 
-    tex1_mask = np.zeros(tex1.shape,dtype=np.int8)
-    tex2_mask = np.ones(tex2.shape,dtype=np.int8)
+    tex1_mask = np.zeros(tex1.shape,dtype=int)
+    tex2_mask = np.ones(tex2.shape,dtype=int)
 
     tex1_mask = cv2.drawContours(tex1_mask,[p1],0, (1,1,1), -1)  # 1
     tex2_mask = cv2.drawContours(tex2_mask,[p2],0, (0,0,0), -1)  # 0
@@ -78,7 +78,7 @@ def get_smplx_flame_crossrespondence_face_ids(smplx_template_obj,
     # s_tex = np.zeros((size,size, 3), np.uint8)
 
     s_uv[:,1] = 1 - s_uv[:,1] # y--v
-    # s_uv = (s_uv*size).astype(np.int)
+    # s_uv = (s_uv*size).astype(int)
 
     # get flame info from flame template obj file.
     f_verts = read_vertex_from_obj(flame_template_obj)
@@ -88,7 +88,7 @@ def get_smplx_flame_crossrespondence_face_ids(smplx_template_obj,
     # f_tex = np.zeros((size,size, 3), np.uint8)
 
     f_uv[:,1] = 1 - f_uv[:,1] # y--v
-    # f_uv = (f_uv*size).astype(np.int)
+    # f_uv = (f_uv*size).astype(int)
 
     # smplx to flame vertex ids
     sf_ids = np.load(smplx_flame_vertex_ids)
@@ -146,11 +146,11 @@ def flame_smplx_texture_combine(flame_obj,
 
     flame_uv[:,1] *=f_h
     flame_uv[:,0] *=f_w
-    flame_uv = flame_uv.astype(np.int)
+    flame_uv = flame_uv.astype(int)
 
     smplx_uv[:,1] *=s_h
     smplx_uv[:,0] *=s_w
-    smplx_uv = smplx_uv.astype(np.int)
+    smplx_uv = smplx_uv.astype(int)
 
     for id in tqdm.tqdm(flame_2_smplx_uv_ids.keys()):
         f_uv_id = id

@@ -20,7 +20,7 @@ def read_vertex_from_obj(fname):
                 v = [float(i) for i in tmp[1:4]]
                 res.append(v)
                 
-    return np.array(res, dtype=np.float) # [N,4]
+    return np.array(res, dtype=float) # [N,4]
 
 def read_uv_coordinates_from_obj(fname):
     res = []
@@ -30,7 +30,7 @@ def read_uv_coordinates_from_obj(fname):
                 tmp = line.split(' ')
                 v = [float(i) for i in tmp[1:3]]
                 res.append(v)
-    return np.array(res, dtype=np.float)
+    return np.array(res, dtype=float)
 
 
 
@@ -45,7 +45,7 @@ def read_vertex_faces_id_from_obj(fname): # read vertices id in faces: (vv1,vv2,
                 else:
                     v = [int(i) for i in tmp[1:4]]
                 res.append(v)
-    return np.array(res, dtype=np.int) - 1 # obj index from 1
+    return np.array(res, dtype=int) - 1 # obj index from 1
 
 
 
@@ -60,7 +60,7 @@ def read_uv_faces_id_from_obj(fname): # read texture id in faces: (vt1,vt2,vt3)
                 else:
                     raise(Exception("not a textured obj file"))
                 res.append(v)
-    return np.array(res, dtype=np.int) - 1 # obj index from 1
+    return np.array(res, dtype=int) - 1 # obj index from 1
 
 
 
